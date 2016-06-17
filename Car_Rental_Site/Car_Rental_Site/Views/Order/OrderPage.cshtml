@@ -1,0 +1,91 @@
+﻿@model Model.VehiclesType
+@{
+    ViewBag.Title = "Order Page";
+}
+
+@section styles {
+    <link href="~/Content/OrederStyle.css" rel="stylesheet" />
+}
+
+<h2>Rent page</h2>
+
+<h4>You chose to rent this Vehicle:</h4>
+
+
+<div class="OneCar">
+    <div class="CarPicture">
+        <img src="/@Html.DisplayFor(m => m.Picture)" alt="Car Picture" />
+    </div>
+    <div class="CarType">
+        @Html.LabelFor(model => model.Manufacturer) : <span>@Html.DisplayFor(m => m.Manufacturer)</span>
+        <br />
+        @Html.LabelFor(model => model.Model) : <span>@Html.DisplayFor(m => m.Model)</span>
+        <br />
+        @Html.LabelFor(model => model.ManufactureYear) : <span>@Html.DisplayFor(m => m.ManufactureYear)</span>
+        <br />
+        @Html.LabelFor(model => model.Transmission) : <span>@Html.DisplayFor(m => m.Transmission)</span>
+        <br />
+        <label>The estimated cost</label>
+    </div>
+    <div class="CarPricesPerDay">
+
+        @if (Model.DailyRentCost != 0)
+        {
+            @Html.LabelFor(model => model.DailyRentCost)
+            <span>@string.Format("{0:0}", Model.DailyRentCost)$</span>
+            <br />
+            <br />
+        }
+        @{
+            var startDate = ViewBag.startDate; var endDate = ViewBag.endDate;
+            var calculated = (int)ViewBag.endDate.Subtract(ViewBag.startDate).TotalDays;
+            var estimatedCost = calculated * Model.DailyRentCost;
+        }
+        <span>@string.Format("{0:0}", estimatedCost)$</span>
+    </div>
+    <div class="CarPricesPerDelay">
+
+        @if (Model.RentCostForDelay != 0)
+        {
+            @Html.LabelFor(model => model.RentCostForDelay)
+            <span>@string.Format("{0:0}", Model.RentCostForDelay)$</span>
+        }
+
+    </div>
+</div>
+
+<h4>From @ViewBag.startDate.ToString("MM/dd/yyyy") To @ViewBag.endDate.ToString("MM/dd/yyyy")</h4>
+
+<div id="OrderFrom">
+    <h3>Are you sure?</h3>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+       
+        <input type="hidden" value="@ViewBag.startDate" name="startDate" />
+        <input type="hidden" value="@ViewBag.endDate" name="endDate" />
+        <input id="btnYes" type="submit" value="Yes" />
+        <input id="btnNo" type="button" value="No" />
+    }
+</div>
+
+@section scripts {
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.custom.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script>
+        $(function () {
+            $("#btnYes").button();
+            $("#btnNo").click(function () {
+                location.href = '/SearchByDates/Search';
+            });
+            $("#btnNo").button();
+        });
+    </script>
+}
+

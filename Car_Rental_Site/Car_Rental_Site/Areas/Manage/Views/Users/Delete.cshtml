@@ -1,0 +1,84 @@
+﻿@model Model.User
+@{
+    ViewBag.Title = "Delete " + Model.UserName;
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete @Model.UserName?</h3>
+<fieldset>
+    <legend>User</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.UserID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.UserName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UserName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Password)
+    </div>
+    <div class="display-field">
+        <span>************</span>
+    </div>
+    @if (Model.Email != null)
+    {
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.Email)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Email)
+        </div>
+    }
+
+    @if (Model.BirthDate != null)
+    {
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </div>
+        <div class="display-field">
+            @Model.BirthDate.Value.ToString("dd/MM/yyyy")
+        </div>
+    }
+
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.HiddenFor(model => model.UserID)
+        @Html.HiddenFor(model => model.UserName)
+        <input type="submit" value="Delete" />
+        |
+        @Html.ActionLink("Back to Mange", "Index", "MangeHome")
+    </p>
+}
+

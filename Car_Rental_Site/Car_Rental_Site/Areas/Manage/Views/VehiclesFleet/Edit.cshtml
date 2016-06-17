@@ -1,0 +1,91 @@
+﻿@model Model.VehiclesFleet
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>VehiclesFleet</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CarNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CarNumber)
+            @Html.ValidationMessageFor(model => model.CarNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VehicleID)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.VehicleID)
+            @Html.HiddenFor(model => model.VehicleID)
+            @Html.ValidationMessageFor(model => model.VehicleID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CurrentMileage)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CurrentMileage)
+            @Html.ValidationMessageFor(model => model.CurrentMileage)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Picture)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Picture)
+            @Html.ValidationMessageFor(model => model.Picture)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Proper)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Proper)
+            @Html.ValidationMessageFor(model => model.Proper)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BranchID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BranchID)
+            @Html.ValidationMessageFor(model => model.BranchID)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TypeID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TypeID)
+            @Html.ValidationMessageFor(model => model.TypeID)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Mange", "Index", "MangeHome")
+</div>
+
+@section Scripts {
+
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+   
+}
+
+

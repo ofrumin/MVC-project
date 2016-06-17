@@ -1,0 +1,109 @@
+﻿@using Model
+@model IEnumerable<User>
+
+@{
+    //Layout = null;
+    ViewBag.Title = "Manage";
+}
+
+<h2 style="color:darkgoldenrod">Manage users role</h2>
+
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<style>
+    .template {
+        display: none;
+    }
+</style>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="users list-group">
+                @foreach (User u in Model)
+                {
+                    <a class="list-group-item" href="#" data-id="@u.UserID">
+                        <strong>@u.UserName</strong>
+                        <span class="pull-right text-muted">@u.Email</span>
+                    </a>
+                }
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4">
+            <div class="wait" style="display: none">
+                <img src="~/Content/wait_icon.gif" width="25" height="25" />
+            </div>
+            <div class="roles" style="display: none">
+                <h4><span class="username"></span>'s roles</h4>
+                <div class="list-group">
+                </div>
+                <div class="list-group-item template">
+                    <input type="checkbox" value="" />
+                    <label></label>
+                    <span class="message">
+                        <img class="statusImg" width="20" height="20" style="display: none" />
+                    </span>
+                </div>
+                <span class="usernameWait" style="display: none">
+                    <img src="~/Content/wait_icon.gif" width="20" height="20" />
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+
+<script src="~/Scripts/bootstrap.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+<script>
+    $(function () {
+        $('[type="checkbox"]').change(function () {
+            $(this).prop('disabled', true);
+            $('.usernameWait').clone(true).removeAttr('style').insertBefore($(this).siblings('.message'));
+            var addUrl = '@Url.Action("AddRoleToUser")';
+            var removeUrl = '@Url.Action("RemoveRoleFromUser")';
+            var $thisListItem = $(this).parents('.list-group-item');
+            $.post(this.checked ? addUrl : removeUrl, { userId: $('.users .active').data('id'), roleName: $(this).val() }, function (result, status) {
+                $thisListItem.find('.usernameWait').remove();
+                if (status == 'success' && result.Status == 'success') {
+                    $thisListItem.find('.statusImg').prop('src', '@Url.Content("~/Content/v.png")').removeAttr('style');
+                } else {
+                    $thisListItem.find('.statusImg').prop('src', '@Url.Content("~/Content/x.png")').removeAttr('style');
+                }
+                $thisListItem.find('[type = "checkbox"]').prop('disabled', false);
+                setTimeout(function () {
+                    $thisListItem.find('.statusImg').css('display', 'none').siblings('.message').text('');
+                }, 2000);
+            });
+        });
+        $('.users a').click(function () {
+            var $clicked = $(this);
+            $('.users a').removeClass('active');
+            $clicked.addClass('active');
+            $('.wait').removeAttr('style');
+            $('.roles').css('display', 'none');
+            $('.roles>.list-group>*').remove();
+            $.get('@Url.Action("GetRolesForUser")', { userId: $(this).data('id') }, function (result, status) {
+                if (status == 'success' && result.Status == 'success') {
+                    $('.username').text($clicked.find('strong').text());
+                    for (var i = 0; i < result.Data.length; i++) {
+                        $('.roles .template').clone(true).removeClass('template')
+                            .find('[type="checkbox"]').prop('checked', result.Data[i].AssignedToRole).val(result.Data[i].RoleName)
+                            .siblings('label').text(result.Data[i].RoleName)
+                            .parents('.list-group-item').appendTo('.roles>.list-group');
+                    }
+                    $('.wait').css('display', 'none');
+                    $('.roles').removeAttr('style');
+                }
+            });
+            return false;
+        });
+    });
+</script>

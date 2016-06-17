@@ -1,0 +1,115 @@
+﻿@model Model.VehiclesType
+@{
+    ViewBag.Title = "Edit " + Model.Manufacturer + " " + Model.Model + " " + Model.ManufactureYear;
+}
+
+<h2>Edit @(Model.Manufacturer + " " + Model.Model + " " + Model.ManufactureYear)</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>VehiclesType</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.VehicleTypeID)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.VehicleTypeID)
+            @Html.HiddenFor(model => model.VehicleTypeID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Manufacturer)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Manufacturer)
+            @Html.ValidationMessageFor(model => model.Manufacturer)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Model)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Model)
+            @Html.ValidationMessageFor(model => model.Model)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ManufactureYear)
+        </div>
+        <div class="editor-field">
+            <input class="text-box single-line" data-val="true" data-val-number="The field ManufactureYear must be a number." data-val-required="The ManufactureYear field is required." id="ManufactureYear" name="ManufactureYear" type="number" value="@Model.ManufactureYear" min="2000" />
+            @Html.ValidationMessageFor(model => model.ManufactureYear)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Transmission)
+        </div>
+        <div class="editor-field" style="margin: 5px;">
+            @if (Model.Transmission == "Auto")
+            {
+                <input id="btnAuto" type="radio" name="Transmission" value="Auto" checked style="width: auto;" />
+                <label for="btnAuto" style="display: inline">Auto</label>
+                <br />
+                <input id="btnManual" type="radio" name="Transmission" value="Manual" style="width: auto;" />
+                <label for="btnManual" style="display: inline">Manual</label>
+            }
+            else
+            {
+                <input id="btnAuto" type="radio" name="Transmission" value="Auto" style="width: auto;" />
+                <label for="btnAuto" style="display: inline">Auto</label>
+                <br />
+                <input id="btnManual" type="radio" name="Transmission" value="Manual" checked style="width: auto;" />
+                <label for="btnManual" style="display: inline">Manual</label>
+            }
+
+            @Html.ValidationMessageFor(model => model.Transmission)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DailyRentCost)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DailyRentCost)
+            @Html.ValidationMessageFor(model => model.DailyRentCost)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RentCostForDelay)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RentCostForDelay)
+            @Html.ValidationMessageFor(model => model.RentCostForDelay)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Picture)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Picture)
+            @Html.ValidationMessageFor(model => model.Picture)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Mange", "Index", "MangeHome")
+</div>
+
+@section Scripts {
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Areas/Manage/Scripts/VehiclesTypesScript.js"></script>
+}
+
+

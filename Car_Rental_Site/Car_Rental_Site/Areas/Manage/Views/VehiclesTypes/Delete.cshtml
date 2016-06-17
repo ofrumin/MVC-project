@@ -1,0 +1,77 @@
+﻿@model Model.VehiclesType
+@{
+    ViewBag.Title = "Delete Vehicle Type ID - @Model.VehicleTypeID";
+}
+
+<h2>Delete Vehicle ID - @Model.VehicleTypeID</h2>
+
+<h3>Are you sure you want to delete @(Model.Manufacturer + " " + Model.Model + " " + Model.ManufactureYear)?</h3>
+<fieldset>
+    <legend>VehiclesType</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.VehicleTypeID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleTypeID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Manufacturer)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Manufacturer)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Model)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Model)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ManufactureYear)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ManufactureYear)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Transmission)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Transmission)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.DailyRentCost)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DailyRentCost)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.RentCostForDelay)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RentCostForDelay)
+    </div>
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.HiddenFor(model => model.VehicleTypeID)
+        @Html.HiddenFor(model => model.Manufacturer)
+        @Html.HiddenFor(model => model.ManufactureYear)
+        @Html.HiddenFor(model => model.Model)
+        @Html.HiddenFor(model => model.Picture)
+        @Html.HiddenFor(model => model.Transmission)
+        @Html.HiddenFor(model => model.DailyRentCost)
+        @Html.HiddenFor(model => model.RentCostForDelay)
+     
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to Mange", "Index", "MangeHome")
+    </p>
+}
+

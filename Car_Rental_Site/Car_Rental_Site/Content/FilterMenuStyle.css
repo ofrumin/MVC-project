@@ -1,0 +1,70 @@
+﻿#FilterMenu {
+    position: fixed;
+    left: 5px;
+    top: 95px;
+    width: auto;
+    background-color: #E9967A;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid black;
+    font-size: 12px;
+    box-shadow: gray 1px 1px 10px;
+}
+
+    #FilterMenu h4 {
+        text-decoration: underline;
+        text-align: center;
+        font-weight: bold;
+        margin: 0px;
+        color:black;
+    }
+
+    #FilterMenu label {
+        display: inline;
+        font-size: 12px;
+        margin-right: 2px;
+        font-weight:bold;
+    }
+
+#SearchManufacturer {
+    font-size: 12px;
+}
+
+#SearchModels {
+    font-size: 12px;
+}
+
+#FilterMenu input[type=checkbox] {
+    width: auto;
+    padding: 0px;
+    margin: 0px;
+}
+
+    #FilterMenu input[type=checkbox] + label {
+        margin-right: 10px;
+        margin-left: 5px;
+        font-weight: normal;
+    }
+
+#PriceBetweenSlider {
+    width: 85%;
+    margin: 5px;
+}
+
+#lblPriceBetween {
+    display:block;
+    width: auto;
+}
+
+#txtFreeText {
+    padding: 0px;
+    margin: 0px;
+    width: auto;
+    font-size: 12px;
+    resize: none;
+}
+
+#btnSearchFilter {
+    font-size: 10px;
+    width: auto;
+}

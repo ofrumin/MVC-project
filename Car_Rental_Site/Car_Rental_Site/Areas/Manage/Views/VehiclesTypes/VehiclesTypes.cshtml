@@ -1,0 +1,73 @@
+﻿@model List<Model.VehiclesType>
+
+@{
+    ViewBag.Title = "Manage Vehicles Types";
+}
+
+<h3>Manage Vehicles Types</h3>
+
+<link href="~/Areas/Manage/Content/ManagerStyle.css" rel="stylesheet" />
+
+<p>
+    @Html.ActionLink("Create New Vehicle Type", "Create")
+</p>
+<table>
+    <thead>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model[0].VehicleTypeID)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model[0].Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model[0].Model)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model[0].ManufactureYear)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model[0].Transmission)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model[0].DailyRentCost)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model[0].RentCostForDelay)
+            </td>
+            <td></td>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleTypeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManufactureYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Transmission)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DailyRentCost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RentCostForDelay)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.VehicleTypeID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.VehicleTypeID })
+            </td>
+        </tr>
+    }
+</table>
+<script src="~/Scripts/jquery-ui-1.10.3.custom.js"></script>

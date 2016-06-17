@@ -1,0 +1,73 @@
+﻿.OneCar {
+    width: 100%;
+    height: 200px;
+    border: 1px solid gray;
+    border-radius:5px;
+    background-color: white;
+}
+
+.CarPicture {
+    height: inherit;
+    float: left;
+    width: 22%;
+}
+
+    .CarPicture img {
+        padding-top: 5px;
+        padding-left: 2px;
+        height: 140px;
+    }
+
+.CarType {
+    height: inherit;
+    float: left;
+    width: 31%;
+    font-size: 20px;
+}
+
+    .CarType Label {
+        display:inline;
+    }
+
+    .CarType span {
+        font-size:24px;
+        color:blue;
+    }
+
+.CarPricesPerDay {
+    height: inherit;
+    float: left;
+    width: 30%;
+    text-align: center;
+}
+
+    .CarPricesPerDay Label {
+        font-size: 23px;
+    }
+
+    .CarPricesPerDay span {
+        font-size: 45px;
+        color: greenyellow;
+        text-shadow:gray 1px 1px 2px;
+    }
+
+.CarPricesPerDelay {
+    height: inherit;
+    float: left;
+    width: 16%;
+    text-align: center;
+}
+
+    .CarPricesPerDelay Label {
+        font-size: 17px;
+    }
+
+    .CarPricesPerDelay span {
+        font-size: 19px;
+        color: red;
+    }
+
+#OrderFrom {
+    text-align:center;
+    font-size:20px;
+}

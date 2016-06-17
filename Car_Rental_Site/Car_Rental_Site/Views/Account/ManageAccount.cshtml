@@ -1,0 +1,100 @@
+﻿@model Model.User
+
+@{
+    ViewBag.Title = "Account Management";
+}
+
+<h2>Account Management</h2>
+
+<div id="Tabs">
+    <ul id="TabsLabel">
+        <li><a href="#UserDetails">Personal Information</a></li>
+        <li><a href="#OrdersDetails" id="LoadInfo">Recent Orders</a></li>
+    </ul>
+
+    <div id="UserDetails">
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.FirstName)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.LastName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LastName)
+        </div>
+
+        <div class="display-label">
+            @Html.DisplayNameFor(model => model.UserName)
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.UserName)
+        </div>
+
+        @*<div class="display-label">
+                @Html.DisplayNameFor(model => model.Password)
+            </div>*@
+        @*<div class="display-field">
+                <span>************</span>
+                <a href="#" id="resetPasswordLink">Change password!</a>
+            </div>*@
+        @if (!Model.Email.IsEmpty())
+        {
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.Email)
+            </div>
+            <div class="display-field">
+                @Html.DisplayFor(model => model.Email)
+            </div>
+        }
+        @if (Model.BirthDate.ToString().Length > 0)
+        {
+            <div class="display-label">
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </div>
+            <div class="display-field">
+                @Model.BirthDate.Value.ToString("dd/MM/yyyy")
+            </div>
+        }
+
+    </div>
+
+    @*<div id="resetPasswordDialog" title="Reset your password!">
+            @Html.Partial("_ChangePasswordPartial", new Car_rental_company.LocalPasswordModel())
+        </div>*@
+
+    @*<div id="resetConfirm" title="Change password status">
+            <p id="ConfirmMessage"></p>
+        </div>*@
+
+
+    <div id="OrdersDetails">
+        <table id="OrdersDetailsResults" style="width: 100%; visibility: hidden;">
+            <thead>
+                <tr>
+                    <td>Vehicle Number</td>
+                    <td>Rental Start Date</td>
+                    <td>Estimated Return Date</td>
+                    <td>Actual Return Date</td>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+@section scripts {
+   
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/UserManagePage.js"></script>
+}
+
+
+@section styles {
+<link href="~/Content/UserManageStyle.css" rel="stylesheet" />
+}

@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Model.User>
+
+@{
+    ViewBag.Title = "Manage Users";
+}
+
+<h3>Manage Users</h3>
+<link href="~/Areas/Manage/Content/ManagerStyle.css" rel="stylesheet" />
+<table>
+    <thead>
+        <tr class="ToLong">
+            <td>
+                @Html.DisplayNameFor(model => model.UserID)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.LastName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.UserName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Password)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Email)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </td>
+            <th></th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                <span>**********</span>
+            </td>
+            <td class="ToLong">
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @if (item.BirthDate != null)
+                {
+                    @item.BirthDate.Value.ToString("dd/MM/yyyy")
+                }
+                else
+                {
+                    <span>--/--/----</span>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { userName = item.UserName }) |
+                <span class="linkDeleteUser">@Html.ActionLink("Delete", "Delete", new { userName = item.UserName })</span>
+            </td>
+        </tr>
+    }
+
+</table>

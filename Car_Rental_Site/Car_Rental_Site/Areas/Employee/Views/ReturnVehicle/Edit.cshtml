@@ -1,0 +1,86 @@
+﻿@model Model.LeasedVehicle
+
+@{
+    ViewBag.Title = "Edit" + Model.RentalStartDate + " " + Model.SoughtReturnDate + " " + Model.ActualReturnDate;
+}
+
+<h3>Please update - @("RentalStartDate: ") @(Model.RentalStartDate.ToShortDateString()), @("SoughtReturnDate: ")@(Model.SoughtReturnDate.ToShortDateString()), @("ActualReturnDate: ")@( Model.ActualReturnDate.ToString())</h3>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>LeasedVehicle</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CarRentalID)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.CarRentalID)
+            @Html.HiddenFor(model => model.CarRentalID)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CarNumber)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.CarNumber)
+            @Html.HiddenFor(model => model.CarNumber)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.UserID)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.UserID)
+            @Html.HiddenFor(model => model.UserID)
+        </div>
+       <div class="editor-label">
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.VehiclesFleet)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.RentalStartDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.RentalStartDate)
+            @Html.ValidationMessageFor(model => model.RentalStartDate)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SoughtReturnDate)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.SoughtReturnDate)
+            @Html.ValidationMessageFor(model => model.SoughtReturnDate)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ActualReturnDate)
+        </div>
+        <div class="editor-field">
+
+            @Html.EditorFor(model => model.ActualReturnDate)
+            @Html.ValidationMessageFor(model => model.ActualReturnDate)
+
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Orders", "Index", "ReturnVehicle")
+</div>
+
+@section Scripts {
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
+
+
+
+

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Model.LeasedVehicle>
+@{
+    ViewBag.Title = "Return vehicles";
+}
+<link href="~/Areas/Employee/Content/ReturnVehicleStyle.css" rel="stylesheet" />
+
+<h2>Return vehicles</h2>
+<label for="txtCarNumber">Search car number:</label>
+<input id="txtCarNumber" type="text" />
+<br />
+<table>
+    <thead>
+        <tr>
+            <td>@Html.DisplayNameFor(model => model.CarRentalID)</td>
+            <td>@Html.DisplayNameFor(model => model.CarNumber)</td>
+            <td>@Html.DisplayName("VehicleID")</td>
+            <td>@Html.DisplayNameFor(model => model.RentalStartDate)</td>
+            <td class="ToLong">@Html.DisplayNameFor(model => model.SoughtReturnDate)</td>
+            <td>@Html.DisplayNameFor(model => model.User)</td>
+            <td>@Html.DisplayNameFor(model => model.ActualReturnDate)</td>
+            <td>@Html.DisplayName("Settling accounts")</td>
+            <td>@Html.DisplayName("Return")</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.CarRentalID)</td>
+                <td class="CarNumber">@Html.DisplayFor(modelItem => item.CarNumber)</td>
+                <td class="ToLong">@Html.DisplayFor(modelItem => item.VehiclesFleet.VehicleID)</td>
+                <td>@Html.DisplayFor(modelItem => item.RentalStartDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.SoughtReturnDate)</td>
+                <td>@Html.DisplayFor(modelItem => item.User.LastName)</td>
+                <td id="actualReturnDate">@Html.DisplayFor(modelItem => item.ActualReturnDate)</td>
+                <td>
+
+                    <input id="@Html.DisplayFor(modelItem => item.CarRentalID)" type="button" value="Settling accounts" class="btnReturnVehicle" />
+                    
+                </td>
+                <td>
+                    <input id="@Html.DisplayFor(modelItem => item.CarRentalID)" type="button" value="Return" class="btnEditVehicle" />
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<div id="dialog" title="Are you sure?">
+    <p>Are you sure you want to return the vehicle with rental ID - <span id="rentalID"></span> ?</p>
+</div>
+
+
+
+@section scripts {
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.custom.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Areas/Employee/Scripts/ReturnPage.js"></script>
+ 
+
+}
+

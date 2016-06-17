@@ -1,0 +1,70 @@
+﻿@model Model.Branch
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Branch</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BranchName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BranchName)
+            @Html.ValidationMessageFor(model => model.BranchName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Latitude)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Latitude)
+            @Html.ValidationMessageFor(model => model.Latitude)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Longitude)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Longitude)
+            @Html.ValidationMessageFor(model => model.Longitude)
+        </div>
+        @Html.LabelFor(model => model.VehiclesFleets)
+        <div class="editor-field">
+            @Html.EditorFor(model => model.VehiclesFleets)
+            @Html.ValidationMessageFor(model => model.VehiclesFleets)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Mange", "Index", "MangeHome")
+</div>
+
+@section Scripts {
+    
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Areas/Manage/Scripts/VehiclesTypesScript.js"></script>
+
+}

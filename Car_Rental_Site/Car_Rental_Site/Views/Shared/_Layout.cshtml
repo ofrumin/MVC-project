@@ -1,0 +1,112 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+    <link href="~/Content/themes/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+   
+    <link href="~/Content/Site.css" rel="stylesheet" />
+
+
+
+    @RenderSection("styles", required: false)
+    <style>
+        .template {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>Car Rental Company</h1>
+        
+
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p class="site-title">
+                    <a href="~/">
+                        <img src="~/Images/logo.png" alt="logo" />
+                    </a>
+                </p>
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+                <nav>
+                    @Html.Partial("_MenuPartial")
+                </nav>
+            </div>
+        </div>
+
+    </header>
+    <nav></nav>
+    <main>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>
+                    &copy; All rights reserved to - Car Rental Company Ltd.
+                    <br />
+                    &copy; Built by Olivia Frumin as final MVC project @DateTime.Now.Year
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="ServerErrorMessages" title="Server Error!">
+        <p id="ErrorMessage"></p>
+    </div>
+
+    @RenderSection("scripts", required: false)
+
+    @* IF there is a problem on the server *@
+    @if (ViewBag.Error != null)
+    {
+        <script>
+            $(function () {
+                //if the problem is critical the user redirect to the home page
+                @if (ViewBag.CriticalError != null)
+                {
+                  <text>openErrorsDialog('@ViewBag.Error', true)</text>
+                }
+                //if the problem is not critical the page displayed but error message  displayed first
+                else
+                {
+                  <text>openErrorsDialog('@ViewBag.Error',false)</text>
+                }
+            });
+        </script>
+    }
+
+    
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.custom.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+    <script src="~/Scripts/ErrorMessages.js"></script>
+
+    <script src="~/Scripts/bootstrap.js"></script>
+
+</body>
+</html>
+

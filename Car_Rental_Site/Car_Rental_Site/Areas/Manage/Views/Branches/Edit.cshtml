@@ -1,0 +1,71 @@
+﻿@model Model.Branch
+
+@{
+    ViewBag.Title = "Edit" + Model.BranchName + " " + Model.Address + " " + Model.Latitude +" "+ Model.Longitude;
+}
+
+<h2>Edit - @("BranchName: ") @(Model.BranchName), @("Address: ")@(Model.Address), @("Latitude: ")@( Model.Latitude), @("Longitude: ")@( Model.Longitude)</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Branch</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BranchID)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.BranchID)
+            @Html.HiddenFor(model => model.BranchID)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BranchName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BranchName)
+            @Html.HiddenFor(model => model.BranchName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.HiddenFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Latitude)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Latitude)
+            @Html.ValidationMessageFor(model => model.Latitude)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Longitude)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Longitude)
+            @Html.ValidationMessageFor(model => model.Longitude)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to Mange", "Index", "MangeHome")
+</div>
+
+@section Scripts {
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+}
+
+

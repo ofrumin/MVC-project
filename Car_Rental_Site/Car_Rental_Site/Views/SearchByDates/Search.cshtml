@@ -1,0 +1,77 @@
+﻿@model Model.VehiclesType
+@{
+    ViewBag.Title = "Search cars";
+}
+
+<h2 id="Header">Search cars for renting</h2>
+
+<div id="DivTwoDates">
+    <label for="fromDate">From</label>
+    <input type="text" id="fromDate" name="fromDate" readonly="readonly" />
+    <label for="toDate">To</label>
+    <input type="text" id="toDate" name="toDate" readonly="readonly" />
+    <input id="btnSearch" type="button" value="Search" style="visibility: hidden;" />
+</div>
+<div id="DivLastSearchs" style="visibility: hidden;">
+    <h4>Last searchs:</h4>
+    <ul id="lstLastSearchs"></ul>
+</div>
+<div id="DivSearchResults">
+</div>
+
+@Html.Partial("_FilterMenuPartial", Model)
+
+@section scripts {
+
+
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/jquery-ui-1.10.3.custom.js"></script>
+    <script src="~/Scripts/localStorageSearch.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+
+
+    <script src="~/Scripts/SearchPage.js"></script>
+
+}
+
+@section styles {
+    <link href="~/Content/themes/smoothness/jquery-ui-1.10.3.custom.css" rel="stylesheet" />
+    <link href="~/Content/SearchStyle.css" rel="stylesheet" />
+    <link href="~/Content/SearchResultStyle.css" rel="stylesheet" />
+    <link href="~/Content/FilterMenuStyle.css" rel="stylesheet" />
+}
+
+<script id="SearchResults-template" type="text/x-html-template">
+    <div class="OneResult">
+        <div class="CarPicture">
+            <img src="/{{Picture}}" alt="Car Picture" />
+        </div>
+        <div class="CarType">
+            @Html.LabelFor(model => model.Manufacturer) : <span>{{Manufacturer}}</span>
+            <br />
+            @Html.LabelFor(model => model.Model) : <span>{{Model}}</span>
+            <br />
+            @Html.LabelFor(model => model.ManufactureYear) : <span>{{ManufactureYear}}</span>
+            <br />
+            @Html.LabelFor(model => model.Transmission) : <span>{{Transmission}}</span>
+        </div>
+        <div class="CarPricesPerDay">
+            @Html.LabelFor(model => model.DailyRentCost)
+            <span>{{DailyRentCost}}$</span>
+        </div>
+        <div class="CarPricesPerDelay">
+            @Html.LabelFor(model => model.RentCostForDelay)
+            <span>{{RentCostForDelay}}$</span>
+        </div>
+
+        <div class="OrderNowButtom">
+            <p>
+                <input id="{{VehicleTypeID}}" type="button" value="Order Now" class="OrderButton"/>
+            </p>
+        </div>
+    </div>
+
+</script>

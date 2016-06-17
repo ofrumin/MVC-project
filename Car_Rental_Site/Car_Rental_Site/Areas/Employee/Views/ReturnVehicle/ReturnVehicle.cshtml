@@ -1,0 +1,70 @@
+﻿@model ModelClass.ReturnVehicle_Result
+
+@{
+    ViewBag.Title = "The Vehicle returned!";
+}
+
+
+<h2>The final cost</h2>
+
+<div id="ReturnInfo">
+    <table>
+        <tbody>
+            <tr>
+                <td></td>
+                <td></td>
+                <td id="payment">Payment</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TotalRegularDays)</td>
+                <td>@Html.DisplayFor(m => m.TotalRegularDays) Days</td>
+                @if (Model.PaymentForRegularDays!=0)
+                {
+                    <td>@string.Format("{0:0}", Model.PaymentForRegularDays)$</td>
+		 
+                }
+
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TotalDelayDays)</td>
+                <td>@Html.DisplayFor(m => m.TotalDelayDays) Days</td>
+                @if (Model.PaymentForDelay!=0)
+                {
+                <td>@string.Format("{0:0}", Model.PaymentForDelay)$</td>
+                }
+
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(m => m.TotalDays)</td>
+                <td>@Html.DisplayFor(m => m.TotalDays) Days</td>
+                 @if (Model.PaymentForDelay!=0&&Model.PaymentForRegularDays!=0)
+                {
+                <td>@string.Format("{0:0}", (Model.PaymentForDelay + Model.PaymentForRegularDays))$</td>
+                 }
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div id="btnOkAlign">
+    <input id="btnOk" type="button" value="OK" />
+</div>
+
+@section scripts {
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script>
+        $(function () {
+            $("#btnOk").click(function () {
+                location.href = '/Employee/ReturnVehicle';
+            });
+        });
+    </script>
+
+
+}
+
+
+@section styles {
+    <link href="~/Areas/Employee/Content/ReturnStyle.css" rel="stylesheet" />
+}
+

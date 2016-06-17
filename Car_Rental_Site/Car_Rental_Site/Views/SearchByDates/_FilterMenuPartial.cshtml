@@ -1,0 +1,70 @@
+﻿@model Model.VehiclesType
+<span class="ui-icon ui-icon-circle-triangle-e" id="OpenFilterMenu" style="visibility:hidden"></span>
+<span class="ui-icon ui-icon-circle-triangle-w" id="CloseFilterMenu" style="visibility:hidden"></span>
+<div id="FilterMenu" style="visibility: hidden">
+    <h4>Filter by</h4>
+
+    <div id="ManufacturerDiv">
+        @Html.LabelFor(model => model.Manufacturer)
+        <select id="SearchManufacturer" name="Manufacturer">
+            <option value="All">
+                All
+            </option>
+            @foreach (var item in ViewBag.ManufacturersList)
+            {
+                <option value="@item">@item</option>
+            }
+        </select>
+    </div>
+
+    <div id="ModelDiv">
+        @Html.LabelFor(model => model.Model)
+        <select id="SearchModels" name="Models">
+            <option value="All">
+                All
+            </option>
+            @foreach (var item in ViewBag.ModelsList)
+            {
+                <option value="@item">@item</option>
+            }
+        </select>
+    </div>
+
+    <div id="YearDiv">
+        @Html.LabelFor(model => model.ManufactureYear)
+        <select id="SearchYear" name="Year">
+            <option value="All">
+                All
+            </option>
+            @foreach (var item in ViewBag.YearsList)
+            {
+                <option value="@item">@item</option>
+            }
+        </select>
+    </div>
+
+    <div id="TransmissionDiv">
+        @Html.LabelFor(model => model.Transmission)<br />
+        <input id="Auto" type="checkbox" name="Transmission" value="Auto" checked />
+        <label for="Auto">Auto</label>
+        <input id="Manual" type="checkbox" name="Transmission" value="Manual" checked />
+        <label for="Manual">Manual</label>
+        <br />
+    </div>
+
+    <div id="PriceDiv">
+        @Html.LabelFor(model => model.DailyRentCost)
+        <br />
+        <span id="lblPriceBetween"></span>
+        <div id="PriceBetweenSlider"></div>
+    </div>
+
+    <div id="FreeText">
+        <label for="txtFreeText">Free text</label>
+        <br />
+        <textarea id="txtFreeText" cols="25" rows="2" maxlength="50"></textarea>
+    </div>
+
+    <input id="btnSearchFilter" type="button" value="Filter" />
+</div>
+

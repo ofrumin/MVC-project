@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Model.Branch>
+
+@{
+    ViewBag.Title = "Manage Branches";
+}
+
+<h2>Manage Branches</h2>
+
+<link href="~/Areas/Manage/Content/ManagerStyle.css" rel="stylesheet" />
+<p>
+    @Html.ActionLink("Add new Branch", "Create")
+</p>
+<table>
+    <thead>
+        <tr class="ToLong">
+            <td>
+                @Html.DisplayNameFor(model => model.BranchID)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.BranchName)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Address)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </td>
+
+            <td></td>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr class="ToLong">
+            <td>
+                @Html.DisplayFor(modelItem => item.BranchID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BranchName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { BranchID = item.BranchID }) |
+                @Html.ActionLink("Delete", "Delete", new { BranchID = item.BranchID })
+            </td>
+        </tr>
+    }
+
+</table>
+

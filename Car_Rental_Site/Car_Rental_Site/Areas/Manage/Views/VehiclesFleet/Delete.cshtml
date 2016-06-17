@@ -1,0 +1,85 @@
+﻿@model Model.VehiclesFleet
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>VehiclesFleet</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CarNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CarNumber)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.VehicleID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VehicleID)
+    </div>
+    
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CurrentMileage)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CurrentMileage)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Picture)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Picture)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Proper)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Proper)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.BranchID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.BranchID)
+    </div>
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.TypeID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TypeID)
+    </div>
+   
+    
+
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.HiddenFor(model => model.CarNumber)
+        @Html.HiddenFor(model => model.VehicleID)
+        @Html.HiddenFor(model => model.TypeID)
+        @Html.HiddenFor(model => model.CurrentMileage)
+        @Html.HiddenFor(model => model.BranchID)
+        @Html.HiddenFor(model => model.Picture)
+        @Html.HiddenFor(model => model.Proper)
+        
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to Mange", "Index", "MangeHome")
+    </p>
+}
+
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.10.3.custom.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>

@@ -1,0 +1,102 @@
+﻿#SearchResult {
+}
+
+.OneResult {
+    width: 100%;
+    height: 130px;
+    border-bottom: 1px solid gray;
+    background-color: white;
+}
+    .OneResult:hover {
+        border: 2px solid red;
+        box-shadow: gray 1px 1px 10px;
+    }
+
+.CarPicture {
+    height: inherit;
+    float: left;
+    width: 18%;
+}
+
+    .CarPicture img {
+        padding-top: 5px;
+        padding-left: 2px;
+        height: 100px;
+    }
+
+.CarType {
+    height: inherit;
+    float: left;
+    width: 27%;
+    font-size: 15px;
+}
+
+    .CarType Label {
+        display:inline;
+    }
+
+    .CarType span {
+        font-size:17px;
+    }
+
+.CarPricesPerDay {
+    height: inherit;
+    float: left;
+    width: 25%;
+    text-align: center;
+}
+
+    .CarPricesPerDay Label {
+        font-size: 18px;
+    }
+
+    .CarPricesPerDay span {
+        font-size: 40px;
+        color: greenyellow;
+        text-shadow:gray 1px 1px 2px;
+    }
+
+.CarPricesPerDelay {
+    height: inherit;
+    float: left;
+    width: 12%;
+    text-align: center;
+}
+
+    .CarPricesPerDelay Label {
+        font-size: 12px;
+    }
+
+    .CarPricesPerDelay span {
+        font-size: 14px;
+        color: red;
+    }
+
+.OrderNowButtom {
+    height: inherit;
+    width: 18%;
+    float: left;
+}
+
+    .OrderNowButtom p {
+        margin-top: 22%;
+        margin-left: 22%;
+    }
+
+#btnBackToSearch {
+    font-size:10px;
+}
+
+#LastSearchsDiv {
+    width:40%;
+}
+
+.lookLikeLink {
+    color:blue;
+    text-decoration:underline;
+}
+
+    .lookLikeLink:hover {
+        font-weight:bold;
+        cursor:pointer;
+    }

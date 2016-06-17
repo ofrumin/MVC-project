@@ -1,0 +1,55 @@
+﻿#ReturnInfo {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+table {
+    width: auto;
+    text-align: center;
+}
+
+    table tbody tr {
+        color: black;
+        font-size: 15px;
+        cursor: default;
+        padding-left: 50px;
+        padding-right: 50px;
+    }
+
+        table tbody tr td {
+            padding-left: 50px;
+            padding-right: 50px;
+        }
+
+        table tbody tr:last-child {
+            color: blue;
+        }
+
+        table tbody tr td:last-child {
+            color: green;
+            padding-left: 100px;
+            padding-right: 100px;
+        }
+
+            table tbody tr td:last-child :first-child {
+                border-bottom: 1px solid black;
+                border-left: none;
+            }
+
+        table tbody tr:last-child td:last-child {
+            font-size: 20px;
+            color: red;
+            font-weight: bold;
+        }
+
+#btnOkAlign {
+    text-align: center;
+}
+
+#payment {
+    color: blue;
+    font-size: 20px;
+    font-weight: bold;
+}

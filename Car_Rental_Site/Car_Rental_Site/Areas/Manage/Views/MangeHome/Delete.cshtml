@@ -1,0 +1,63 @@
+﻿@model Model.LeasedVehicle
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>LeasedVehicle</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CarRentalID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CarRentalID)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.CarNumber)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CarNumber)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.RentalStartDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RentalStartDate)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.SoughtReturnDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SoughtReturnDate)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.ActualReturnDate)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ActualReturnDate)
+    </div>
+
+</fieldset>
+@using (Html.BeginForm())
+{
+    <p>
+        @Html.HiddenFor(model => model.CarRentalID)
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to Mange", "Index", "MangeHome")
+    </p>
+}
+
+<script src="~/Scripts/jquery-1.9.1.js"></script>
+<script src="~/Scripts/jquery-ui-1.10.3.custom.js"></script>
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>

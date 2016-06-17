@@ -1,0 +1,14 @@
+﻿#DivTwoDates label {
+    display: inline;
+}
+
+#DivTwoDates input[type=text] {
+    margin-right: 15px;
+}
+
+.NoMatch {
+    text-align:center;
+    font-size:20px;
+    color:red;
+    font-weight:bold;
+}

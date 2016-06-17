@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Model.VehiclesFleet>
+
+@{
+    ViewBag.Title = "Manage Vehicles Fleet";
+}
+
+<h3>Manage Vehicles Fleet</h3>
+<link href="~/Areas/Manage/Content/ManagerStyle.css" rel="stylesheet" />
+<p>
+    @Html.ActionLink("Add new vehicle to the fleet", "Create")
+</p>
+<table>
+    <thead>
+        <tr class="ToLong">
+            <td>
+                @Html.DisplayNameFor(model => model.CarNumber)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.VehicleID)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.CurrentMileage)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Picture)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.Proper)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.BranchID)
+            </td>
+            <td>
+                @Html.DisplayNameFor(model => model.TypeID)
+            </td>
+
+
+
+
+            <td></td>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr class="ToLong">
+            <td>
+                @Html.DisplayFor(modelItem => item.CarNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VehicleID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CurrentMileage)
+            </td>
+            <td>
+                @item.Picture.Substring(item.Picture.LastIndexOf('/') + 1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proper)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BranchID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeID)
+            </td>
+
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { carNumber = item.CarNumber }) |
+                @Html.ActionLink("Delete", "Delete", new { carNumber = item.CarNumber })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,19 @@
+﻿<ul id="menu">
+    <li>@Html.ActionLink("Home", "Index", "Home", new { Area = "" }, "")</li>
+    <li>@Html.ActionLink("Search cars", "Search", "SearchByDates", new { Area = "" }, "")</li>
+    <li>@Html.ActionLink("About", "About", "Home", new { Area = "" }, "")</li>
+    <li>@Html.ActionLink("Contact", "Contact", "Home", new { Area = "" }, "")</li>
+    @if (User.IsInRole("Admin"))
+    {
+        <li>@Html.ActionLink("Manage", "index", new { Area = "Manage", Controller = "MangeHome", action = "index" }, "")</li>
+    }
+    @if (User.IsInRole("Employee"))
+    {
+        <li>@Html.ActionLink("Manage", "index", new { Area = "Employee", Controller = "ReturnVehicle", action = "index" }, "")</li>
+    }
+    @if (User.IsInRole("User"))
+    {
+        <li>@Html.ActionLink("Manage your account", "ManageAccount", new { Area = "", Controller = "Account", action = "ManageAccount" }, "")</li>
+    }
+   
+</ul>

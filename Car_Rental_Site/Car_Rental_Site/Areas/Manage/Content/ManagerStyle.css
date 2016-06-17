@@ -1,0 +1,44 @@
+﻿table {
+    width: 110%;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+    table thead {
+        border-bottom: 3px solid black;
+        background-color: #b9c9fe;
+        color: #039;
+        font-weight: bold;
+        font-size: 14px;
+        cursor: default;
+    }
+
+
+    table tbody tr {
+        border-bottom: 1px solid white;
+        background-color: #e8edff;
+        color: #669;
+        font-size: 14px;
+        cursor: default;
+        margin: 0px;
+        padding: 0px;
+    }
+
+        table tbody tr:hover {
+            background-color: #b9c9fe;
+            color: #039;
+        }
+
+.ToLong {
+    font-size: 12px;
+}
+
+.lookLikeLink {
+    color:blue;
+    text-decoration:underline;
+}
+
+    .lookLikeLink:hover {
+        font-weight:bold;
+        cursor:pointer;
+    }

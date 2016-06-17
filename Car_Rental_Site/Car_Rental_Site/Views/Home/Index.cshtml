@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h1>@ViewBag.Title</h1>
+            </hgroup>
+            <p>
+                Welcome to CRC - Car Rental Company.
+                <br />
+                In this site you can rent a car - <mark>Simple, Easy, Quick and Safe.</mark>
+                Jast enter to this @Html.ActionLink("link", "Search", "SearchByDates") and you are in the half of the way.
+            </p>
+        </div>
+    </section>
+}
+<h3>Rent a car in 3 simple and quick steps:</h3>
+<ol class="round">
+    <li class="one">
+        <h5>Register / login</h5>
+        First you neet to register to this site @Html.ActionLink("Here", "Register", "Account").
+        <br />
+        If you are already registered, you can login @Html.ActionLink("Here", "Login", "Account").
+    </li>
+
+    <li class="two">
+        <h5>Search car for renting</h5>
+        Search the car you want to rent @Html.ActionLink("Here", "Search", "SearchByDates").
+        <br />
+        You just need to enter two dates,
+        start date and end date.
+        <br />
+        Then you get the all vehicles that available to rent between these two dates.
+        <br />
+        When you decision which car you want to rent just press on the "Order Now" button in the right.
+    </li>
+
+    <li class="three">
+        <h5>Rent the car</h5>
+        Check if this car is the actual car you want to rent, and the dates are the dates you chosen.
+        <br />
+        If it is just click "Yes" and we save the car you want in the dates you want just for you!
+    </li>
+</ol>
